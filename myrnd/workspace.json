@@ -2,6 +2,8 @@
   "version": 2,
   "projects": {
     "api-demo": "apps/api-demo",
-    "api-demo-e2e": "apps/api-demo-e2e"
+    "api-demo-e2e": "apps/api-demo-e2e",
+    "react-hooks-demo": "apps/react-hooks-demo",
+    "react-hooks-demo-e2e": "apps/react-hooks-demo-e2e"
   }
 }

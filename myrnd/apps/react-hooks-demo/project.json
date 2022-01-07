@@ -1,0 +1,73 @@
+{
+  "root": "apps/react-hooks-demo",
+  "sourceRoot": "apps/react-hooks-demo/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/react-hooks-demo",
+        "index": "apps/react-hooks-demo/src/index.html",
+        "baseHref": "/",
+        "main": "apps/react-hooks-demo/src/main.tsx",
+        "polyfills": "apps/react-hooks-demo/src/polyfills.ts",
+        "tsConfig": "apps/react-hooks-demo/tsconfig.app.json",
+        "assets": [
+          "apps/react-hooks-demo/src/favicon.ico",
+          "apps/react-hooks-demo/src/assets"
+        ],
+        "styles": ["apps/react-hooks-demo/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/react-hooks-demo/src/environments/environment.ts",
+              "with": "apps/react-hooks-demo/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "react-hooks-demo:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "react-hooks-demo:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/react-hooks-demo/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/react-hooks-demo"],
+      "options": {
+        "jestConfig": "apps/react-hooks-demo/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
